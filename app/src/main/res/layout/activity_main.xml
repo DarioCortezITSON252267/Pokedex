@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pokedex_yellow"
+    tools:context=".MainActivity">
+
+    <!-- Guidelines -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCardTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <!-- MainActivity la sube según la altura de la barra de navegación -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <!-- Cabecera -->
+
+    <ImageView
+        android:id="@+id/ivPokeball"
+        android:layout_width="@dimen/pokeball_size"
+        android:layout_height="@dimen/pokeball_size"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_pokeball"
+        app:layout_constraintStart_toStartOf="@id/guidelineCenter"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/Pokedex.Text.Name"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="@string/pokemon_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        style="@style/Pokedex.Text.Number"
+        android:text="@string/pokemon_number"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+    <ImageView
+        android:id="@+id/ivFavorite"
+        android:layout_width="@dimen/favorite_size"
+        android:layout_height="@dimen/favorite_size"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:contentDescription="@string/cd_favorite"
+        android:src="@drawable/ic_star"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Tarjeta blanca -->
+
+    <View
+        android:id="@+id/viewCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineCardTop" />
+
+    <ImageView
+        android:id="@+id/ivPokemon"
+        android:layout_width="@dimen/pokemon_image_size"
+        android:layout_height="@dimen/pokemon_image_size"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:contentDescription="@string/cd_pokemon_image"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pikachu"
+        app:layout_constraintBottom_toTopOf="@id/tvType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvType"
+        style="@style/Pokedex.Text.Type"
+        android:layout_marginTop="40dp"
+        android:text="@string/pokemon_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineCardTop" />
+
+
+    <TextView
+        android:id="@+id/tvHeightLabel"
+        style="@style/Pokedex.Text.StatLabel"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/label_height"
+        app:layout_constraintEnd_toStartOf="@id/tvHeight"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvType" />
+
+    <TextView
+        android:id="@+id/tvHeight"
+        style="@style/Pokedex.Text.StatValue"
+        android:layout_marginStart="@dimen/margin_large"
+        android:text="@string/pokemon_height"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvHeightLabel"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+        app:layout_constraintStart_toEndOf="@id/tvHeightLabel" />
+
+    <TextView
+        android:id="@+id/tvWeightLabel"
+        style="@style/Pokedex.Text.StatLabel"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/label_weight"
+        app:layout_constraintEnd_toEndOf="@id/tvHeightLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvHeightLabel" />
+
+    <TextView
+        android:id="@+id/tvWeight"
+        style="@style/Pokedex.Text.StatValue"
+        android:text="@string/pokemon_weight"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvWeightLabel"
+        app:layout_constraintStart_toStartOf="@id/tvHeight" />
+
+
+
+    <TextView
+        android:id="@+id/tvAbilityLabel"
+        style="@style/Pokedex.Text.StatLabel"
+        android:layout_marginStart="@dimen/margin_large"
+        android:text="@string/label_ability"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvHeightLabel"
+        app:layout_constraintStart_toStartOf="@id/guidelineCenter" />
+
+    <TextView
+        android:id="@+id/tvAbility"
+        style="@style/Pokedex.Text.StatValue"
+        android:text="@string/pokemon_ability"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvWeightLabel"
+        app:layout_constraintStart_toStartOf="@id/tvAbilityLabel" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/Pokedex.Text.Description"
+        android:layout_marginStart="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:layout_marginEnd="@dimen/margin_xlarge"
+        android:text="@string/pokemon_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWeightLabel" />
+
+    <!-- Navegación inferior: las dos imágenes forman una cadena "spread_inside" -->
+
+    <ImageView
+        android:id="@+id/ivPrevious"
+        style="@style/Pokedex.NavImage"
+        android:layout_marginStart="@dimen/margin_large"
+        android:contentDescription="@string/cd_previous_image"
+        android:src="@drawable/morsa"
+        app:layout_constraintBottom_toTopOf="@id/ivPreviousArrow"
+        app:layout_constraintEnd_toStartOf="@id/ivNext"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivNext"
+        style="@style/Pokedex.NavImage"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:contentDescription="@string/cd_next_image"
+        android:src="@drawable/raichu"
+        app:layout_constraintBottom_toTopOf="@id/ivNextArrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivPrevious" />
+
+    <ImageView
+        android:id="@+id/ivPreviousArrow"
+        style="@style/Pokedex.NavArrow"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:contentDescription="@string/cd_previous"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintBottom_toTopOf="@id/guidelineBottom"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPrevious"
+        style="@style/Pokedex.Text.NavLabel"
+        android:layout_marginStart="@dimen/margin_small"
+        android:text="@string/previous_pokemon"
+        app:layout_constraintBottom_toBottomOf="@id/ivPreviousArrow"
+        app:layout_constraintStart_toEndOf="@id/ivPreviousArrow"
+        app:layout_constraintTop_toTopOf="@id/ivPreviousArrow" />
+
+    <ImageView
+        android:id="@+id/ivNextArrow"
+        style="@style/Pokedex.NavArrow"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:contentDescription="@string/cd_next"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toTopOf="@id/guidelineBottom"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNext"
+        style="@style/Pokedex.Text.NavLabel"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:text="@string/next_pokemon"
+        app:layout_constraintBottom_toBottomOf="@id/ivNextArrow"
+        app:layout_constraintEnd_toStartOf="@id/ivNextArrow"
+        app:layout_constraintTop_toTopOf="@id/ivNextArrow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

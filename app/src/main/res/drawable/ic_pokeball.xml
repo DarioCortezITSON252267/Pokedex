@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- Borde y franja central -->
+    <path
+        android:fillColor="@color/black"
+        android:pathData="M50,0a50,50 0,1 0,0 100a50,50 0,1 0,0 -100z" />
+    <!-- Mitad superior -->
+    <path
+        android:fillColor="@color/pokeball_red"
+        android:pathData="M5.2,46A45,45 0,0 1,94.8 46z" />
+    <!-- Mitad inferior -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M5.2,54A45,45 0,0 0,94.8 54z" />
+    <!-- Botón central -->
+    <path
+        android:fillColor="@color/black"
+        android:pathData="M50,34a16,16 0,1 0,0 32a16,16 0,1 0,0 -32z" />
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M50,40a10,10 0,1 0,0 20a10,10 0,1 0,0 -20z" />
+</vector>
