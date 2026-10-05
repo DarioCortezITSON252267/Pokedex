@@ -18,6 +18,6 @@
     <string name="cd_pokemon_image">Imagen de Pikachu</string>
     <string name="cd_previous_image">Imagen de Morsa</string>
     <string name="cd_next_image">Imagen de Raichu</string>
-    <string name="cd_previous">Pokémon anterior</string>
+    <string name="cd_previous">Pokémon anterior.</string>
     <string name="cd_next">Pokémon siguiente</string>
 </resources>
