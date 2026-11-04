@@ -12,20 +12,22 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavDestination.Companion.hasRoute
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dario.cortez.pokedex.model.domain.Destination
+import dario.cortez.pokedex.viewmodel.UserViewModel
 
 @Composable
-fun Navigation(modifier: Modifier = Modifier) {
+fun Navigation(userViewModel: UserViewModel, modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     // La pestaña seleccionada sale de la pantalla actual, así se mantiene bien al pulsar "atrás"
     val currentEntry by navController.currentBackStackEntryAsState()
     val currentDestination = currentEntry?.destination
+    // En el Login no se muestra la barra de navegación
+    val showBottomBar = currentDestination != null && !currentDestination.hasRoute(Login::class)
 
     Scaffold(modifier = modifier.fillMaxSize(), bottomBar = {
-        NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) {
+        if (showBottomBar) NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) {
             // Iterar la colección de destinos para crear un botón por cada uno
             Destination.entries.forEach { destination ->
                 val route = destination.toRoute()
@@ -33,7 +35,7 @@ fun Navigation(modifier: Modifier = Modifier) {
                     selected = currentDestination?.hasRoute(route::class) == true,
                     onClick = {
                         navController.navigate(route) {
-                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                            popUpTo<PokemonList> { saveState = true }
                             launchSingleTop = true
                             restoreState = true
                         }
@@ -49,11 +51,10 @@ fun Navigation(modifier: Modifier = Modifier) {
             }
         }
     }) { innerPadding ->
-        MyApp(navController = navController, innerPadding = innerPadding)
+        MyApp(navController = navController, innerPadding = innerPadding, userViewModel = userViewModel)
     }
 }
 
-// Relaciona cada destino de la barra con su ruta de Routes.kt
 private fun Destination.toRoute(): Any = when (this) {
     Destination.HOME -> PokemonList
     Destination.HUNT -> PokemonHunt

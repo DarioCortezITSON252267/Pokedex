@@ -33,10 +33,11 @@ import dario.cortez.pokedex.ui.theme.PokedexTheme
 import dario.cortez.pokedex.utilities.getColorByType
 
 @Composable
-fun PokemonRow(pokemon: Pokemon) {
+fun PokemonRow(pokemon: Pokemon, onClick: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(10.dp)
     ) {
         Image(

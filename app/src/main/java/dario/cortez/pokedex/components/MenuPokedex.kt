@@ -18,10 +18,14 @@ import dario.cortez.pokedex.model.domain.Pokemon
 import dario.cortez.pokedex.ui.theme.PokedexTheme
 
 @Composable
-fun MenuPokedex(pokemons: List<Pokemon>) {
-    LazyColumn {
+fun MenuPokedex(
+    pokemons: List<Pokemon>,
+    modifier: Modifier = Modifier,
+    onPokemonClick: (Pokemon) -> Unit = {}
+) {
+    LazyColumn(modifier = modifier) {
         items(pokemons) { pokemon ->
-            PokemonRow(pokemon)
+            PokemonRow(pokemon = pokemon, onClick = { onPokemonClick(pokemon) })
         }
     }
 }

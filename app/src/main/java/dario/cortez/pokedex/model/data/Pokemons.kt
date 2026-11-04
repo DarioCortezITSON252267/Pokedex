@@ -4,9 +4,9 @@ import dario.cortez.pokedex.R
 import dario.cortez.pokedex.model.domain.Pokemon
 
 val pokemonList = listOf(
-    Pokemon("Bulbasaur", 1, "Grass/Poison", "There is a plant seed on its back from the day this Pokémon is born.", 0.7f, 6.9f, false, "Overgrow", R.drawable.pikachu),
-    Pokemon("Charmander", 4, "Fire", "The flame on its tail shows the strength of its life force.", 0.6f, 8.5f, true, "Blaze", R.drawable.pikachu),
-    Pokemon("Squirtle", 7, "Water", "After birth, its back swells and hardens into a shell.", 0.5f, 9.0f, false, "Torrent", R.drawable.pikachu),
+    Pokemon("Bulbasaur", 1, "Grass/Poison", "There is a plant seed on its back from the day this Pokémon is born.", 0.7f, 6.9f, false, "Overgrow", R.drawable.bulbasaur),
+    Pokemon("Charmander", 4, "Fire", "The flame on its tail shows the strength of its life force.", 0.6f, 8.5f, true, "Blaze", R.drawable.charmander),
+    Pokemon("Squirtle", 7, "Water", "After birth, its back swells and hardens into a shell.", 0.5f, 9.0f, false, "Torrent", R.drawable.squirtle),
     Pokemon("Pikachu", 25, "Electric", "When several of these Pokémon gather, their electricity could build and cause lightning storms.", 0.4f, 6.0f, true, "Static", R.drawable.pikachu),
     Pokemon("Jigglypuff", 39, "Normal/Fairy", "Uses its alluring eyes to enrapture its foe, then sings a pleasant melody to lull them to sleep.", 0.5f, 5.5f, false, "Cute Charm", R.drawable.pikachu),
     Pokemon("Gengar", 94, "Ghost/Poison", "Under a full moon, this Pokémon likes to mimic the shadows of people and laugh at their fright.", 1.5f, 40.5f, true, "Cursed Body", R.drawable.pikachu),
