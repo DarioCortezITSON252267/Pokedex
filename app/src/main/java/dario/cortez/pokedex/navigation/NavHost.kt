@@ -11,10 +11,16 @@ import dario.cortez.pokedex.screens.MenuPokedexScreen
 import dario.cortez.pokedex.screens.PokemonDetailsScreen
 import dario.cortez.pokedex.screens.PokemonHuntScreen
 import dario.cortez.pokedex.screens.ProfileScreen
+import dario.cortez.pokedex.viewmodel.PokemonDetailViewModel
 import dario.cortez.pokedex.viewmodel.UserViewModel
 
 @Composable
-fun MyApp(navController: NavHostController, innerPadding: PaddingValues, userViewModel: UserViewModel) {
+fun MyApp(
+    navController: NavHostController,
+    innerPadding: PaddingValues,
+    userViewModel: UserViewModel,
+    pokemonDetailViewModel: PokemonDetailViewModel
+) {
     NavHost(navController, startDestination = Login) {
         composable<Login> {
             LoginScreen(
@@ -41,18 +47,23 @@ fun MyApp(navController: NavHostController, innerPadding: PaddingValues, userVie
                     }
                 },
                 onCatchNew = { navController.navigate(PokemonHunt) },
-                onPokemonClick = { number -> navController.navigate(PokemonDetail(number)) }
+                onPokemonClick = { number -> navController.navigate(PokemonDetail(number)) },
+                onNavigateToProfile = { navController.navigate(Profile) { launchSingleTop = true } }
             )
         }
         composable<PokemonDetail> { backStackEntry ->
             val detail = backStackEntry.toRoute<PokemonDetail>()
-            PokemonDetailsScreen(innerPadding = innerPadding, pokemon = detail.pokemon)
+            PokemonDetailsScreen(
+                innerPadding = innerPadding,
+                pokemonNumber = detail.pokemon,
+                pokemonDetailViewModel = pokemonDetailViewModel
+            )
         }
         composable<PokemonHunt> {
             PokemonHuntScreen(innerPadding = innerPadding)
         }
         composable<Profile> {
-            ProfileScreen(innerPadding = innerPadding, currentUser = userViewModel.currentUser)
+            ProfileScreen(innerPadding = innerPadding, userViewModel = userViewModel)
         }
     }
 }

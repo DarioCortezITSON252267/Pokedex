@@ -22,6 +22,6 @@ fun getFavoritePokemons(): List<Pokemon> {
     return pokemonList.filter { it.favorite }
 }
 
-fun getPokemonByNumber(pokemon: Int): Pokemon {
-    return pokemonList.first { it.number == pokemon }
+fun getPokemonByNumber(pokemon: Int): Pokemon? {
+    return pokemonList.firstOrNull { it.number == pokemon }
 }

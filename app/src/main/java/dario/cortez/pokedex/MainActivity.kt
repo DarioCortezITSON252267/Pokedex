@@ -96,7 +96,7 @@ fun PokemonHeader() {
             )
         }
         Image(
-            painter = painterResource(R.drawable.ic_star),
+            painter = painterResource(R.drawable.estrellita),
             contentDescription = stringResource(R.string.cd_favorite),
             modifier = Modifier
                 .align(Alignment.TopEnd)

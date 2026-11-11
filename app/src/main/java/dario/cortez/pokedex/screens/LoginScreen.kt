@@ -110,3 +110,5 @@ fun LoginPreview() {
         )
     }
 }
+//Para acceder a la aplicacion
+//dariocortez@correo.com	1234

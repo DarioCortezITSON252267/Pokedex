@@ -60,8 +60,6 @@ class Users(context: Context) {
         }
         return null
     }
-
-    // true = lista, false = cuadrícula
     fun savePokemonDisplay(showAsList: Boolean) {
         val editor = shared.edit()
         editor.putBoolean(POKEMON_DISPLAY, showAsList)

@@ -15,20 +15,23 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dario.cortez.pokedex.model.domain.Destination
+import dario.cortez.pokedex.viewmodel.PokemonDetailViewModel
 import dario.cortez.pokedex.viewmodel.UserViewModel
 
 @Composable
-fun Navigation(userViewModel: UserViewModel, modifier: Modifier = Modifier) {
+fun Navigation(
+    userViewModel: UserViewModel,
+    pokemonDetailViewModel: PokemonDetailViewModel,
+    modifier: Modifier = Modifier
+) {
     val navController = rememberNavController()
-    // La pestaña seleccionada sale de la pantalla actual, así se mantiene bien al pulsar "atrás"
+
     val currentEntry by navController.currentBackStackEntryAsState()
     val currentDestination = currentEntry?.destination
-    // En el Login no se muestra la barra de navegación
     val showBottomBar = currentDestination != null && !currentDestination.hasRoute(Login::class)
 
     Scaffold(modifier = modifier.fillMaxSize(), bottomBar = {
         if (showBottomBar) NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) {
-            // Iterar la colección de destinos para crear un botón por cada uno
             Destination.entries.forEach { destination ->
                 val route = destination.toRoute()
                 NavigationBarItem(
@@ -51,7 +54,12 @@ fun Navigation(userViewModel: UserViewModel, modifier: Modifier = Modifier) {
             }
         }
     }) { innerPadding ->
-        MyApp(navController = navController, innerPadding = innerPadding, userViewModel = userViewModel)
+        MyApp(
+            navController = navController,
+            innerPadding = innerPadding,
+            userViewModel = userViewModel,
+            pokemonDetailViewModel = pokemonDetailViewModel
+        )
     }
 }
 

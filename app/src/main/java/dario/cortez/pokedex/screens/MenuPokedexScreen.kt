@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Switch
@@ -36,7 +37,8 @@ fun MenuPokedexScreen(
     onDisplayChange: (Boolean) -> Unit = {},
     onLogout: () -> Unit = {},
     onCatchNew: () -> Unit = {},
-    onPokemonClick: (Int) -> Unit = {}
+    onPokemonClick: (Int) -> Unit = {},
+    onNavigateToProfile: () -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -44,6 +46,12 @@ fun MenuPokedexScreen(
             .padding(innerPadding)
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
+            IconButton(onClick = onNavigateToProfile) {
+                Icon(
+                    painter = painterResource(R.drawable.baseline_account_circle_24),
+                    contentDescription = "Mi perfil"
+                )
+            }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
@@ -74,7 +82,7 @@ fun MenuPokedexScreen(
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier.weight(1f)
                 )
-                // Encendido = lista, apagado = cuadrícula
+
                 Switch(
                     checked = showAsList,
                     onCheckedChange = onDisplayChange,
